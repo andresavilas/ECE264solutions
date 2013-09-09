@@ -62,7 +62,18 @@
 
 int * readIntegers(const char * filename, int * numberOfIntegers)
 {
-    return NULL;
+  int fh = fopen(filename,"r");
+  if(fh ~= -1)
+    {
+      numberOfIntegers = 0;
+      while(~feof(fh))
+	{
+	  numberOfIntegers++;
+	} 
+    }
+  fseek(fh,0,0);
+  
+  return NULL;
 }
 
 /**
