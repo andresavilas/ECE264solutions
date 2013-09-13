@@ -1,5 +1,4 @@
 
-
 #include "pa03.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -134,9 +133,10 @@ void sort(int * arr, int length)
 void str_sort(int * arr,int ind,int ind2)
 {
   int pivot;
+  int copy;
   int min;
   int max;
-  min = ind;
+  min = ind + 1;
   max = ind2;
   pivot = arr[ind];
   if(ind == ind2)
@@ -146,27 +146,31 @@ void str_sort(int * arr,int ind,int ind2)
     {
       while(min < max)
 	{
-	  while(pivot < arr[max] && min < max)
-	    {
-	      max--;
-	    }
-	  arr[min] = arr[max];
-	  while(pivot > arr[min] && min < max)
+	  while(min < ind2 + 1 && arr[min] < pivot)
 	    {
 	      min++;
 	    }
-	  arr[max] = arr[min];
+	  while(max > ind - 1 && arr[max] > pivot)
+	    {
+	      max--;
+	    }
+	  if(max > min)
+	    {
+	      copy = arr[min];
+	      arr[min] = arr[max];
+	      arr[max] = copy;
+	    }
 	}
+      if(min >= max)
+	{
+	  arr[ind] = arr[--min];
 	  arr[min] = pivot;
-	
-      if(min > ind)
+	}
+      if(min > 0)
 	{
 	  str_sort(arr,ind,--min);
 	}
-      if(max < ind2)
-	{
-	  str_sort(arr,++max,ind2);
-	}
+      //str_sort(arr,++max,ind2);
     }
 }
 
@@ -219,25 +223,25 @@ int searchhelper(int*,int,int,int);
 int search(int * arr, int length, int key)
 {
   
-  return searchhelper(arr,0,length - 1,key);
+  return searchhelper(arr,0,length,key);
 }
 
-int searchhelper(int * arr,int min,int max,int key)
+int searchhelper(int * arr,int low,int high,int key)
 {
-  if(min > max)
+  if(low > high)
     {
       return -1;
     }
-  int ind = (min + max)/2;
+  int ind = (low + high)/2;
   if(arr[ind] == key)
     {
       return ind;
     }
   if(arr[ind] > key)
     {
-      return searchhelper(arr,min,ind - 1,key);
+      return searchhelper(arr,low,ind - 1,key);
     }
-  return searchhelper(arr,ind + 1,max,key);
+  return searchhelper(arr,ind + 1,high,key);
 }
 
 

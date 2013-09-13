@@ -1,52 +1,67 @@
-==26127== Memcheck, a memory error detector
-==26127== Copyright (C) 2002-2009, and GNU GPL'd, by Julian Seward et al.
-==26127== Using Valgrind-3.5.0 and LibVEX; rerun with -h for copyright info
-==26127== Command: ./pa03 inputs/input1
-==26127== Parent PID: 26114
-==26127== 
---26127-- 
---26127-- Valgrind options:
---26127--    --tool=memcheck
---26127--    --leak-check=full
---26127--    --verbose
---26127--    --log-file=outputs/valgrind-log1
---26127-- Contents of /proc/version:
---26127--   Linux version 2.6.18-348.16.1.el5 (mockbuild@x86-012.build.bos.redhat.com) (gcc version 4.1.2 20080704 (Red Hat 4.1.2-54)) #1 SMP Sat Jul 27 01:05:23 EDT 2013
---26127-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---26127-- Page sizes: currently 4096, max supported 4096
---26127-- Valgrind library directory: /usr/lib64/valgrind
---26127-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA03/pa03 (0x400000)
---26127-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux (0x38000000)
---26127--    object doesn't have a dynamic symbol table
---26127-- Reading syms from /lib64/ld-2.5.so (0x30af200000)
---26127-- Reading suppressions file: /usr/lib64/valgrind/default.supp
---26127-- REDIR: 0x30af2147a0 (strlen) redirected to 0x3803e767 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---26127-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so (0x4802000)
---26127-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so (0x4a03000)
-==26127== WARNING: new redirection conflicts with existing -- ignoring it
---26127--     new: 0x30af2147a0 (strlen              ) R-> 0x04a070b0 strlen
---26127-- REDIR: 0x30af214770 (strcmp) redirected to 0x4a07180 (strcmp)
---26127-- REDIR: 0x30af2145c0 (index) redirected to 0x4a06f20 (index)
---26127-- REDIR: 0x30af2158f0 (stpcpy) redirected to 0x4a08120 (stpcpy)
---26127-- Reading syms from /opt/SUNWut/lib64/libc_ut.so (0x4c0b000)
---26127-- Reading syms from /lib64/libc-2.5.so (0x30af600000)
---26127-- Reading syms from /lib64/libdl-2.5.so (0x30afe00000)
---26127-- REDIR: 0x30af679130 (rindex) redirected to 0x4a06dd0 (rindex)
---26127-- REDIR: 0x30af6787c0 (strcmp) redirected to 0x4a07140 (strcmp)
---26127-- REDIR: 0x30af673ea0 (malloc) redirected to 0x4a0608a (malloc)
---26127-- REDIR: 0x30af675830 (free) redirected to 0x4a05c9a (free)
---26127-- REDIR: 0x30af678d40 (strlen) redirected to 0x4a07070 (strlen)
---26127-- REDIR: 0x30af67ab20 (mempcpy) redirected to 0x4a08020 (mempcpy)
---26127-- REDIR: 0x30af679ff0 (memset) redirected to 0x4a07320 (memset)
-==26127== 
-==26127== HEAP SUMMARY:
-==26127==     in use at exit: 0 bytes in 0 blocks
-==26127==   total heap usage: 2 allocs, 2 frees, 588 bytes allocated
-==26127== 
-==26127== All heap blocks were freed -- no leaks are possible
-==26127== 
-==26127== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
---26127-- 
---26127-- used_suppression:      4 dl-hack3
-==26127== 
-==26127== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
+==19306== Memcheck, a memory error detector
+==19306== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==19306== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==19306== Command: ./pa03 inputs/input1
+==19306== Parent PID: 19297
+==19306== 
+--19306-- 
+--19306-- Valgrind options:
+--19306--    --tool=memcheck
+--19306--    --leak-check=full
+--19306--    --verbose
+--19306--    --log-file=outputs/valgrind-log1
+--19306-- Contents of /proc/version:
+--19306--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--19306-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--19306-- Page sizes: currently 4096, max supported 4096
+--19306-- Valgrind library directory: /usr/lib64/valgrind
+--19306-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA03/pa03
+--19306-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--19306--    object doesn't have a dynamic symbol table
+--19306-- Reading syms from /lib64/ld-2.12.so
+--19306-- Scheduler: using generic scheduler lock implementation.
+--19306-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==19306== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-19306-by-avila2-on-ecelinux10.ecn.purdue.edu
+==19306== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-19306-by-avila2-on-ecelinux10.ecn.purdue.edu
+==19306== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-19306-by-avila2-on-ecelinux10.ecn.purdue.edu
+==19306== 
+==19306== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==19306== don't want to do, unless you know exactly what you're doing,
+==19306== or are doing some strange experiment):
+==19306==   /usr/lib64/valgrind/../../bin/vgdb --pid=19306 ...command...
+==19306== 
+==19306== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==19306==   /path/to/gdb ./pa03
+==19306== and then give GDB the following command
+==19306==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=19306
+==19306== --pid is optional if only one valgrind process is running
+==19306== 
+--19306-- REDIR: 0x38bea17520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--19306-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--19306-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--19306-- REDIR: 0x38bea17390 (index) redirected to 0x4a07bf0 (index)
+--19306-- REDIR: 0x38bea17410 (strcmp) redirected to 0x4a08530 (strcmp)
+--19306-- Reading syms from /lib64/libc-2.12.so
+--19306-- REDIR: 0x38bee84ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--19306-- REDIR: 0x38bee87180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--19306-- REDIR: 0x38bee82e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--19306-- REDIR: 0x38bee7f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--19306-- REDIR: 0x38bef27ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--19306-- REDIR: 0x38bee7a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--19306-- REDIR: 0x38bee7b710 (free) redirected to 0x4a06369 (free)
+--19306-- REDIR: 0x38bee8ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--19306-- REDIR: 0x38bee81350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--19306-- REDIR: 0x38bee846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+==19306== 
+==19306== HEAP SUMMARY:
+==19306==     in use at exit: 0 bytes in 0 blocks
+==19306==   total heap usage: 2 allocs, 2 frees, 588 bytes allocated
+==19306== 
+==19306== All heap blocks were freed -- no leaks are possible
+==19306== 
+==19306== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--19306-- 
+--19306-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--19306-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==19306== 
+==19306== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
