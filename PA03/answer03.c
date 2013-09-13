@@ -120,31 +120,61 @@ int * readIntegers(const char * filename, int * numberOfIntegers)
  * sort.
  *
  */
+void str_sort(int *,int,int);
 void sort(int * arr, int length)
 {
-  int pivot;
-  int min;
-  int max;
   int ind;
-  pivot = arr[0];
-  min = 0;
+  int ind2;
   ind = 0;
-  max = length - 1;
-  str_sort(arr,max, pivot, min,max);
+  ind2 = length - 1;
+  str_sort(arr,ind,ind2);
 }
 
-void str_sort(int * arr, int length, int pivot, int min,int max,int ind)
+void str_sort(int * arr,int ind,int ind2)
 {
+  int pivot;
   int copy;
-  if(pivot >= arr[min])
+  int min;
+  int max;
+  min = ind + 1;
+  max = ind2;
+  pivot = arr[ind];
+  if(ind == ind2)
     {
-      arr[ind] = arr[min];
-      arr[min] = pivot;
-      str_sort(arr,length,pivot,++min,max,ind)
     }
-  max = ++min;
-  if(arr[min] >= arr[max])
+  else
     {
+      while(min < max)
+	{
+	  while(min < ind2 + 1 && arr[min] < pivot)
+	    {
+	      min++;
+	    }
+	  while(max > ind - 1 && arr[max] > pivot)
+	    {
+	      max--;
+	    }
+	  if(max > min)
+	    {
+	      copy = arr[min];
+	      arr[min] = arr[max];
+	      arr[max] = copy;
+	    }
+	}
+      if(min >= max)
+	{
+	  arr[ind] = arr[--min];
+	  arr[min] = pivot;
+	}
+      if(max == ind)
+	{
+	  str_sort(arr,++ind,min);
+	}
+      if(min > 0)
+	{
+	  str_sort(arr,ind,--min);
+	}
+      //str_sort(arr,++max,ind2);
     }
 }
 
@@ -192,9 +222,30 @@ void str_sort(int * arr, int length, int pivot, int min,int max,int ind)
  * }
  * return -1;
  */
+int searchhelper(int*,int,int,int);
+
 int search(int * arr, int length, int key)
 {
-    return -1;
+  
+  return searchhelper(arr,0,length,key);
+}
+
+int searchhelper(int * arr,int low,int high,int key)
+{
+  if(low > high)
+    {
+      return -1;
+    }
+  int ind = (low + high)/2;
+  if(arr[ind] == key)
+    {
+      return ind;
+    }
+  if(arr[ind] > key)
+    {
+      return searchhelper(arr,low,ind - 1,key);
+    }
+  return searchhelper(arr,ind + 1,high,key);
 }
 
 
