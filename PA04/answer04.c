@@ -103,6 +103,7 @@ void work_inc(int *,int,int);
 void partitionIncreasing(int value)
 {
   printf("partitionIncreasing %d\n", value);
+
   partition_inc(value);
 }
 
@@ -124,12 +125,11 @@ void work_inc(int *arr,int pos, int i)
   int ct;
   for(ct = 1;ct <= i;++ct)
     {
-      if()
+      if(pos == 0 || ct > arr[pos - 1])
 	{
-	  continue;
+	  arr[pos] = ct;
+	  work_inc(arr,pos + 1, i - ct);
 	}
-      arr[pos] = ct;
-      work_inc(arr,pos + 1, i - ct);
     }
 }
 
@@ -151,13 +151,32 @@ void work_inc(int *arr,int pos, int i)
  * generates invalid partitions and checks validity before printing.
  *
  */
-
+void partition_dec(int*,int,int);
 
 void partitionDecreasing(int value)
 {
+  int *buffer = malloc(sizeof(int) * value);
   printf("partitionDecreasing %d\n", value);
-  
+  partition_dec(buffer,0,value);
+  free(buffer);
+}
 
+void partition_dec(int *arr,int pos,int i)
+{
+    if(i <= 0)
+    {
+      print_arr(arr,pos);
+      return;
+    }
+  int ct;
+  for(ct = 1;ct <= i;++ct)
+    {
+      if(pos == 0 || ct < arr[pos - 1])
+	{
+	  arr[pos] = ct;
+	  partition_dec(arr,pos + 1, i - ct);
+	}
+    }
 }
 
 /*
@@ -177,13 +196,33 @@ void partitionDecreasing(int value)
  * generates invalid partitions and checks validity before printing.
  */
 
+void work_odd(int *,int,int);
 
 void partitionOdd(int value)
 {
+  int *buffer = malloc(sizeof(int) * value);
   printf("partitionOdd %d\n", value);
-  
+  work_odd(buffer,0,value);
+  free(buffer);
 }
 
+void work_odd(int *arr,int pos,int i)
+{
+    if(i <= 0)
+    {
+      print_arr(arr,pos);
+      return;
+    }
+  int ct;
+  for(ct = 1;ct <= i;++ct)
+    {
+      if(ct % 2 == 1)
+	{
+	  arr[pos] = ct;
+	  work_odd(arr,pos + 1, i - ct);
+	}
+    }
+}
 /*
  * =================================================================
  * This function prints even number only partitions of a positive integer value
@@ -202,11 +241,32 @@ void partitionOdd(int value)
  * The program should generate only valid partitions.  Do not
  * generates invalid partitions and checks validity before printing.
  */
+void work_even(int *,int,int);
 
 void partitionEven(int value)
 {
+  int *buffer = malloc(sizeof(int) * value);
   printf("partitionEven %d\n", value);
-  
+  work_even(buffer,0,value);
+  free(buffer);
+}
+
+void work_even(int *arr,int pos,int i)
+{
+  if(i <= 0)
+    {
+      print_arr(arr,pos);
+      return;
+    }
+  int ct;
+  for(ct = 1;ct <= i;++ct)
+    {
+      if((ct % 2 == 0))
+	{
+	  arr[pos] = ct;
+	  work_even(arr,pos + 1, i - ct);
+	}
+    }
 }
 
 /*
@@ -226,12 +286,32 @@ void partitionEven(int value)
  * The program should generate only valid partitions.  Do not
  * generates invalid partitions and checks validity before printing.
  */
-
+void work_evenodd(int *,int,int);
 
 void partitionOddAndEven(int value)
 {
+  int *buffer = malloc(sizeof(int) * value);
   printf("partitionOddAndEven %d\n", value);
-  
+  work_evenodd(buffer,0,value);
+  free(buffer);
+}
+
+void work_evenodd(int *arr,int pos,int i)
+{
+  if(i <= 0)
+    {
+      print_arr(arr,pos);
+      return;
+    }
+  int ct;
+  for(ct = 1;ct <= i;++ct)
+    {
+      if((ct % 2 == 1 && arr[pos - 1] % 2 == 0) || (ct % 2 == 0 && arr[pos - 1] % 2 == 1))
+	{
+	  arr[pos] = ct;
+	  work_evenodd(arr,pos + 1, i - ct);
+	}
+    }
 }
 
 /*
@@ -250,10 +330,44 @@ void partitionOddAndEven(int value)
  * generates invalid partitions and checks validity before printing.
  */
 
-
+int prime_check(int);
+void work_prime(int *,int,int); 
 
 void partitionPrime(int value)
 {
+  int *buffer = malloc(sizeof(int) * value);
   printf("partitionPrime %d\n", value);
+  work_prime(buffer,0,value);
+  free(buffer);
+}
 
+void work_prime(int *arr,int pos,int i)
+{
+  if(i <= 0)
+    {
+      print_arr(arr,pos);
+      return;
+    }
+  int ct;
+  for(ct = 1;ct <= i;++ct)
+    {
+      if(prime_check(ct))
+	{
+	  arr[pos] = ct;
+	  work_prime(arr,pos + 1, i - ct);
+	}
+    }
+}
+
+int prime_check(int ct)
+{
+  int i;
+  for(i = 2;i < ct;++ct)
+    {
+      if(ct % i == 0)
+	{
+	  return 0;
+	}
+    }
+  return 1;
 }
