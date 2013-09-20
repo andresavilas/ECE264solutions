@@ -29,12 +29,55 @@
  * = 2 + 1
  * = 3
  */
-
+void partition(int);
+void work_all(int *,int,int);
+void print_arr(int *,int);
 
 void partitionAll(int value)
 {
   printf("partitionAll %d\n", value);
-  
+  partition(value);
+}
+
+void partition(int i)
+{
+  int *buffer;
+  buffer = malloc(sizeof(int)*i);
+  work_all(buffer,0,i);
+  free(buffer);
+}
+
+void work_all(int *arr,int pos, int i)
+{
+  if(i <= 0)
+    {
+      print_arr(arr,pos);
+      return;
+    }
+  int ct;
+  for(ct = 1;ct <= i;++ct)
+    {
+      arr[pos] = ct;
+      work_all(arr,pos + 1, i - ct);
+    }
+}
+
+void print_arr(int *arr,int lth)
+{
+  int ct;
+  if(lth > 0)
+    {
+      printf("=");
+      for(ct = 0;ct < lth;ct++)
+	{
+	  printf(" %d",arr[ct]);
+	  if(ct + 1 != lth)
+	    {
+	      printf(" +");
+	    }
+	}
+      printf("\n");
+    }
 }
 /*
  * =================================================================
@@ -54,12 +97,40 @@ void partitionAll(int value)
  * generates invalid partitions and checks validity before printing.
  *
  */
-
+void partition_inc(int);
+void work_inc(int *,int,int);
 
 void partitionIncreasing(int value)
 {
   printf("partitionIncreasing %d\n", value);
+  partition_inc(value);
+}
 
+void partition_inc(int i)
+{
+  int *buffer;
+  buffer = malloc(sizeof(int) * i);
+  work_inc(buffer,0,i);
+  free(buffer);
+}
+
+void work_inc(int *arr,int pos, int i)
+{
+  if(i <= 0)
+    {
+      print_arr(arr,pos);
+      return;
+    }
+  int ct;
+  for(ct = 1;ct <= i;++ct)
+    {
+      if()
+	{
+	  continue;
+	}
+      arr[pos] = ct;
+      work_inc(arr,pos + 1, i - ct);
+    }
 }
 
 /*
@@ -135,7 +206,7 @@ void partitionOdd(int value)
 void partitionEven(int value)
 {
   printf("partitionEven %d\n", value);
-
+  
 }
 
 /*
