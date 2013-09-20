@@ -343,6 +343,7 @@ void partitionPrime(int value)
 
 void work_prime(int *arr,int pos,int i)
 {
+  int answer;
   if(i <= 0)
     {
       print_arr(arr,pos);
@@ -351,7 +352,8 @@ void work_prime(int *arr,int pos,int i)
   int ct;
   for(ct = 1;ct <= i;++ct)
     {
-      if(prime_check(ct))
+      answer = prime_check(ct);
+        if(answer == 1)
 	{
 	  arr[pos] = ct;
 	  work_prime(arr,pos + 1, i - ct);
@@ -362,6 +364,10 @@ void work_prime(int *arr,int pos,int i)
 int prime_check(int ct)
 {
   int i;
+  if(ct < 2)
+    {
+      return FALSE;
+    }
   for(i = 2;i < ct;++i)
     {
       if(ct % i == 0)

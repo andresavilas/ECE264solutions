@@ -1,106 +1,106 @@
-==10727== Memcheck, a memory error detector
-==10727== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==10727== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==10727== Command: ./pa04 inputs/input07
-==10727== Parent PID: 10726
-==10727== 
---10727-- 
---10727-- Valgrind options:
---10727--    --tool=memcheck
---10727--    --leak-check=full
---10727--    --verbose
---10727--    --log-file=outputs/memoutput7
---10727-- Contents of /proc/version:
---10727--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
---10727-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---10727-- Page sizes: currently 4096, max supported 4096
---10727-- Valgrind library directory: /usr/lib64/valgrind
---10727-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA04/pa04
---10727-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---10727--    object doesn't have a dynamic symbol table
---10727-- Reading syms from /lib64/ld-2.12.so
---10727-- Scheduler: using generic scheduler lock implementation.
---10727-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==10727== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-10727-by-avila2-on-ecelinux04.ecn.purdue.edu
-==10727== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-10727-by-avila2-on-ecelinux04.ecn.purdue.edu
-==10727== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-10727-by-avila2-on-ecelinux04.ecn.purdue.edu
-==10727== 
-==10727== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==10727== don't want to do, unless you know exactly what you're doing,
-==10727== or are doing some strange experiment):
-==10727==   /usr/lib64/valgrind/../../bin/vgdb --pid=10727 ...command...
-==10727== 
-==10727== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==10727==   /path/to/gdb ./pa04
-==10727== and then give GDB the following command
-==10727==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=10727
-==10727== --pid is optional if only one valgrind process is running
-==10727== 
---10727-- REDIR: 0x37fc417520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---10727-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---10727-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---10727-- REDIR: 0x37fc417390 (index) redirected to 0x4a07bf0 (index)
---10727-- REDIR: 0x37fc417410 (strcmp) redirected to 0x4a08530 (strcmp)
---10727-- Reading syms from /lib64/libm-2.12.so
---10727-- Reading syms from /lib64/libc-2.12.so
---10727-- REDIR: 0x37fc884ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---10727-- REDIR: 0x37fc887180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---10727-- REDIR: 0x37fc882e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---10727-- REDIR: 0x37fc881350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
---10727-- REDIR: 0x37fc8846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
---10727-- REDIR: 0x37fc87a8e0 (malloc) redirected to 0x4a0696c (malloc)
---10727-- REDIR: 0x37fc88ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
---10727-- REDIR: 0x37fc87b710 (free) redirected to 0x4a06369 (free)
-==10727== Invalid read of size 4
-==10727==    at 0x400CC7: work_evenodd (answer04.c:309)
-==10727==    by 0x400C56: partitionOddAndEven (answer04.c:295)
-==10727==    by 0x400F86: main (pa04.c:46)
-==10727==  Address 0x4c382bc is 4 bytes before a block of size 120 alloc'd
-==10727==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==10727==    by 0x400C27: partitionOddAndEven (answer04.c:293)
-==10727==    by 0x400F86: main (pa04.c:46)
-==10727== 
-==10727== Invalid read of size 4
-==10727==    at 0x400CEB: work_evenodd (answer04.c:309)
-==10727==    by 0x400C56: partitionOddAndEven (answer04.c:295)
-==10727==    by 0x400F86: main (pa04.c:46)
-==10727==  Address 0x4c382bc is 4 bytes before a block of size 120 alloc'd
-==10727==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==10727==    by 0x400C27: partitionOddAndEven (answer04.c:293)
-==10727==    by 0x400F86: main (pa04.c:46)
-==10727== 
-==10727== 
-==10727== HEAP SUMMARY:
-==10727==     in use at exit: 0 bytes in 0 blocks
-==10727==   total heap usage: 2 allocs, 2 frees, 688 bytes allocated
-==10727== 
-==10727== All heap blocks were freed -- no leaks are possible
-==10727== 
-==10727== ERROR SUMMARY: 30 errors from 2 contexts (suppressed: 6 from 6)
-==10727== 
-==10727== 15 errors in context 1 of 2:
-==10727== Invalid read of size 4
-==10727==    at 0x400CEB: work_evenodd (answer04.c:309)
-==10727==    by 0x400C56: partitionOddAndEven (answer04.c:295)
-==10727==    by 0x400F86: main (pa04.c:46)
-==10727==  Address 0x4c382bc is 4 bytes before a block of size 120 alloc'd
-==10727==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==10727==    by 0x400C27: partitionOddAndEven (answer04.c:293)
-==10727==    by 0x400F86: main (pa04.c:46)
-==10727== 
-==10727== 
-==10727== 15 errors in context 2 of 2:
-==10727== Invalid read of size 4
-==10727==    at 0x400CC7: work_evenodd (answer04.c:309)
-==10727==    by 0x400C56: partitionOddAndEven (answer04.c:295)
-==10727==    by 0x400F86: main (pa04.c:46)
-==10727==  Address 0x4c382bc is 4 bytes before a block of size 120 alloc'd
-==10727==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==10727==    by 0x400C27: partitionOddAndEven (answer04.c:293)
-==10727==    by 0x400F86: main (pa04.c:46)
-==10727== 
---10727-- 
---10727-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---10727-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==10727== 
-==10727== ERROR SUMMARY: 30 errors from 2 contexts (suppressed: 6 from 6)
+==11148== Memcheck, a memory error detector
+==11148== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==11148== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==11148== Command: ./pa04 inputs/input07
+==11148== Parent PID: 11147
+==11148== 
+--11148-- 
+--11148-- Valgrind options:
+--11148--    --tool=memcheck
+--11148--    --leak-check=full
+--11148--    --verbose
+--11148--    --log-file=outputs/memoutput7
+--11148-- Contents of /proc/version:
+--11148--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--11148-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--11148-- Page sizes: currently 4096, max supported 4096
+--11148-- Valgrind library directory: /usr/lib64/valgrind
+--11148-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA04/pa04
+--11148-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--11148--    object doesn't have a dynamic symbol table
+--11148-- Reading syms from /lib64/ld-2.12.so
+--11148-- Scheduler: using generic scheduler lock implementation.
+--11148-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==11148== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-11148-by-avila2-on-ecelinux04.ecn.purdue.edu
+==11148== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-11148-by-avila2-on-ecelinux04.ecn.purdue.edu
+==11148== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-11148-by-avila2-on-ecelinux04.ecn.purdue.edu
+==11148== 
+==11148== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==11148== don't want to do, unless you know exactly what you're doing,
+==11148== or are doing some strange experiment):
+==11148==   /usr/lib64/valgrind/../../bin/vgdb --pid=11148 ...command...
+==11148== 
+==11148== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==11148==   /path/to/gdb ./pa04
+==11148== and then give GDB the following command
+==11148==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=11148
+==11148== --pid is optional if only one valgrind process is running
+==11148== 
+--11148-- REDIR: 0x37fc417520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--11148-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--11148-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--11148-- REDIR: 0x37fc417390 (index) redirected to 0x4a07bf0 (index)
+--11148-- REDIR: 0x37fc417410 (strcmp) redirected to 0x4a08530 (strcmp)
+--11148-- Reading syms from /lib64/libm-2.12.so
+--11148-- Reading syms from /lib64/libc-2.12.so
+--11148-- REDIR: 0x37fc884ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--11148-- REDIR: 0x37fc887180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--11148-- REDIR: 0x37fc882e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--11148-- REDIR: 0x37fc881350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--11148-- REDIR: 0x37fc8846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--11148-- REDIR: 0x37fc87a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--11148-- REDIR: 0x37fc88ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--11148-- REDIR: 0x37fc87b710 (free) redirected to 0x4a06369 (free)
+==11148== Invalid read of size 4
+==11148==    at 0x400CC7: work_evenodd (answer04.c:309)
+==11148==    by 0x400C56: partitionOddAndEven (answer04.c:295)
+==11148==    by 0x400F9A: main (pa04.c:46)
+==11148==  Address 0x4c382bc is 4 bytes before a block of size 120 alloc'd
+==11148==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==11148==    by 0x400C27: partitionOddAndEven (answer04.c:293)
+==11148==    by 0x400F9A: main (pa04.c:46)
+==11148== 
+==11148== Invalid read of size 4
+==11148==    at 0x400CEB: work_evenodd (answer04.c:309)
+==11148==    by 0x400C56: partitionOddAndEven (answer04.c:295)
+==11148==    by 0x400F9A: main (pa04.c:46)
+==11148==  Address 0x4c382bc is 4 bytes before a block of size 120 alloc'd
+==11148==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==11148==    by 0x400C27: partitionOddAndEven (answer04.c:293)
+==11148==    by 0x400F9A: main (pa04.c:46)
+==11148== 
+==11148== 
+==11148== HEAP SUMMARY:
+==11148==     in use at exit: 0 bytes in 0 blocks
+==11148==   total heap usage: 2 allocs, 2 frees, 688 bytes allocated
+==11148== 
+==11148== All heap blocks were freed -- no leaks are possible
+==11148== 
+==11148== ERROR SUMMARY: 30 errors from 2 contexts (suppressed: 6 from 6)
+==11148== 
+==11148== 15 errors in context 1 of 2:
+==11148== Invalid read of size 4
+==11148==    at 0x400CEB: work_evenodd (answer04.c:309)
+==11148==    by 0x400C56: partitionOddAndEven (answer04.c:295)
+==11148==    by 0x400F9A: main (pa04.c:46)
+==11148==  Address 0x4c382bc is 4 bytes before a block of size 120 alloc'd
+==11148==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==11148==    by 0x400C27: partitionOddAndEven (answer04.c:293)
+==11148==    by 0x400F9A: main (pa04.c:46)
+==11148== 
+==11148== 
+==11148== 15 errors in context 2 of 2:
+==11148== Invalid read of size 4
+==11148==    at 0x400CC7: work_evenodd (answer04.c:309)
+==11148==    by 0x400C56: partitionOddAndEven (answer04.c:295)
+==11148==    by 0x400F9A: main (pa04.c:46)
+==11148==  Address 0x4c382bc is 4 bytes before a block of size 120 alloc'd
+==11148==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==11148==    by 0x400C27: partitionOddAndEven (answer04.c:293)
+==11148==    by 0x400F9A: main (pa04.c:46)
+==11148== 
+--11148-- 
+--11148-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--11148-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==11148== 
+==11148== ERROR SUMMARY: 30 errors from 2 contexts (suppressed: 6 from 6)

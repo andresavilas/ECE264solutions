@@ -1,66 +1,66 @@
-==10691== Memcheck, a memory error detector
-==10691== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==10691== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==10691== Command: ./pa04 inputs/input05
-==10691== Parent PID: 10690
-==10691== 
---10691-- 
---10691-- Valgrind options:
---10691--    --tool=memcheck
---10691--    --leak-check=full
---10691--    --verbose
---10691--    --log-file=outputs/memoutput5
---10691-- Contents of /proc/version:
---10691--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
---10691-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---10691-- Page sizes: currently 4096, max supported 4096
---10691-- Valgrind library directory: /usr/lib64/valgrind
---10691-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA04/pa04
---10691-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---10691--    object doesn't have a dynamic symbol table
---10691-- Reading syms from /lib64/ld-2.12.so
---10691-- Scheduler: using generic scheduler lock implementation.
---10691-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==10691== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-10691-by-avila2-on-ecelinux04.ecn.purdue.edu
-==10691== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-10691-by-avila2-on-ecelinux04.ecn.purdue.edu
-==10691== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-10691-by-avila2-on-ecelinux04.ecn.purdue.edu
-==10691== 
-==10691== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==10691== don't want to do, unless you know exactly what you're doing,
-==10691== or are doing some strange experiment):
-==10691==   /usr/lib64/valgrind/../../bin/vgdb --pid=10691 ...command...
-==10691== 
-==10691== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==10691==   /path/to/gdb ./pa04
-==10691== and then give GDB the following command
-==10691==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=10691
-==10691== --pid is optional if only one valgrind process is running
-==10691== 
---10691-- REDIR: 0x37fc417520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---10691-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---10691-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---10691-- REDIR: 0x37fc417390 (index) redirected to 0x4a07bf0 (index)
---10691-- REDIR: 0x37fc417410 (strcmp) redirected to 0x4a08530 (strcmp)
---10691-- Reading syms from /lib64/libm-2.12.so
---10691-- Reading syms from /lib64/libc-2.12.so
---10691-- REDIR: 0x37fc884ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---10691-- REDIR: 0x37fc887180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---10691-- REDIR: 0x37fc882e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---10691-- REDIR: 0x37fc881350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
---10691-- REDIR: 0x37fc8846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
---10691-- REDIR: 0x37fc87a8e0 (malloc) redirected to 0x4a0696c (malloc)
---10691-- REDIR: 0x37fc88ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
---10691-- REDIR: 0x37fc87b710 (free) redirected to 0x4a06369 (free)
-==10691== 
-==10691== HEAP SUMMARY:
-==10691==     in use at exit: 0 bytes in 0 blocks
-==10691==   total heap usage: 2 allocs, 2 frees, 600 bytes allocated
-==10691== 
-==10691== All heap blocks were freed -- no leaks are possible
-==10691== 
-==10691== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
---10691-- 
---10691-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---10691-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==10691== 
-==10691== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+==11112== Memcheck, a memory error detector
+==11112== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==11112== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==11112== Command: ./pa04 inputs/input05
+==11112== Parent PID: 11111
+==11112== 
+--11112-- 
+--11112-- Valgrind options:
+--11112--    --tool=memcheck
+--11112--    --leak-check=full
+--11112--    --verbose
+--11112--    --log-file=outputs/memoutput5
+--11112-- Contents of /proc/version:
+--11112--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--11112-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--11112-- Page sizes: currently 4096, max supported 4096
+--11112-- Valgrind library directory: /usr/lib64/valgrind
+--11112-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA04/pa04
+--11112-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--11112--    object doesn't have a dynamic symbol table
+--11112-- Reading syms from /lib64/ld-2.12.so
+--11112-- Scheduler: using generic scheduler lock implementation.
+--11112-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==11112== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-11112-by-avila2-on-ecelinux04.ecn.purdue.edu
+==11112== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-11112-by-avila2-on-ecelinux04.ecn.purdue.edu
+==11112== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-11112-by-avila2-on-ecelinux04.ecn.purdue.edu
+==11112== 
+==11112== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==11112== don't want to do, unless you know exactly what you're doing,
+==11112== or are doing some strange experiment):
+==11112==   /usr/lib64/valgrind/../../bin/vgdb --pid=11112 ...command...
+==11112== 
+==11112== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==11112==   /path/to/gdb ./pa04
+==11112== and then give GDB the following command
+==11112==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=11112
+==11112== --pid is optional if only one valgrind process is running
+==11112== 
+--11112-- REDIR: 0x37fc417520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--11112-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--11112-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--11112-- REDIR: 0x37fc417390 (index) redirected to 0x4a07bf0 (index)
+--11112-- REDIR: 0x37fc417410 (strcmp) redirected to 0x4a08530 (strcmp)
+--11112-- Reading syms from /lib64/libm-2.12.so
+--11112-- Reading syms from /lib64/libc-2.12.so
+--11112-- REDIR: 0x37fc884ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--11112-- REDIR: 0x37fc887180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--11112-- REDIR: 0x37fc882e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--11112-- REDIR: 0x37fc881350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--11112-- REDIR: 0x37fc8846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--11112-- REDIR: 0x37fc87a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--11112-- REDIR: 0x37fc88ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--11112-- REDIR: 0x37fc87b710 (free) redirected to 0x4a06369 (free)
+==11112== 
+==11112== HEAP SUMMARY:
+==11112==     in use at exit: 0 bytes in 0 blocks
+==11112==   total heap usage: 2 allocs, 2 frees, 600 bytes allocated
+==11112== 
+==11112== All heap blocks were freed -- no leaks are possible
+==11112== 
+==11112== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--11112-- 
+--11112-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--11112-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==11112== 
+==11112== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
