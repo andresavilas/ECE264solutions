@@ -362,12 +362,12 @@ void work_prime(int *arr,int pos,int i)
 int prime_check(int ct)
 {
   int i;
-  for(i = 2;i < ct;++ct)
+  for(i = 2;i < ct;++i)
     {
       if(ct % i == 0)
 	{
-	  return 0;
+	  return FALSE;
 	}
     }
-  return 1;
+  return TRUE;
 }
