@@ -63,6 +63,25 @@
 
 int * readInteger(char * filename, int * numInteger)
 {
+  FILE* fh = fopen(filename,"r");
+  int * ptr = NULL;
+  int ct;
+  int a;
+  if(fh != NULL)
+    {
+      *numInteger = 0;
+      while(fscanf(fh,"%d",&a) != EOF)
+	{
+	  *numInteger += 1;
+	}
+      fseek(fh,0,SEEK_SET);
+      ptr = malloc(sizeof(int) * *numInteger);
+      for(ct = 0;fscanf(fh,"%d",(ptr + ct)) != EOF;ct++);
+      {	
+      }
+    }
+  fclose(fh);
+  return(ptr);
 }
 
 /* ----------------------------------------------- */
@@ -73,7 +92,7 @@ int * readInteger(char * filename, int * numInteger)
  * allocate memory for an array of strings, i.e., array of arrays of
  * characters. In other words, this is a two-dimensional array (thus,
  * char **).
- *
+ * 
  * Arguments:
  *
  * filename: the name of a file that contains a list of strings (one
@@ -133,6 +152,29 @@ int * readInteger(char * filename, int * numInteger)
 
 char * * readString(char * filename, int * numString)
 {
+  FILE* fh = fopen(filename,"r");
+  char** strArr = NULL;
+  if(fh != NULL)
+    {
+      int ind = 0;
+      int a;
+      size_t len = 0;
+      char * str = NULL;
+      while((* numString = getline(&str,&len,fh)) != -1)
+	{
+	}
+      fseek(fh,0,SEEK_SET);
+      len = 0;
+      strArr = malloc(sizeof(char*) * (*numString));
+      while((a = getline(&str,&len,fh)) != -1)
+	{
+	  strArr[ind] = malloc(sizeof(char) * (strlen(str) + 1));
+	  strcpy(strArr[ind],str);
+	  ind++;
+	}
+    }
+  fclose(fh);
+  return(strArr);
 }
 
 /* ----------------------------------------------- */
@@ -141,6 +183,11 @@ char * * readString(char * filename, int * numString)
  */
 void printInteger(int * arrInteger, int numInteger)
 {
+  int ind;
+  for(ind = 0;ind < numInteger;ind++)
+    {
+      printf("%d/n",arrInteger[ind]);
+    }
 }
 
 /* ----------------------------------------------- */
@@ -151,6 +198,11 @@ void printInteger(int * arrInteger, int numInteger)
  */
 void printString(char * * arrString, int numString)
 {
+  int ind;
+  for(ind = 0;ind < numString;ind++)
+    {
+      printf("%s/n",arrString[ind]);
+    }
 }
 
 /* ----------------------------------------------- */
@@ -159,6 +211,12 @@ void printString(char * * arrString, int numString)
  */
 void freeInteger(int * arrInteger, int numInteger)
 {
+  int ind;
+  for(ind = 0;ind < numInteger;ind++)
+    {
+      free(&arrInteger[ind]);
+    }
+  free(&arrInteger[ind]);
 }
 
 /* ----------------------------------------------- */
@@ -169,6 +227,12 @@ void freeInteger(int * arrInteger, int numInteger)
  */
 void freeString(char * * arrString, int numString)
 {
+  int ind;
+  for(ind = 0;ind < numString;ind++)
+    {
+      free(&arrString[ind]);
+    }
+  free(&arrString[ind]);
 }
 
 /* ----------------------------------------------- */
