@@ -1,0 +1,76 @@
+==27184== Memcheck, a memory error detector
+==27184== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==27184== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==27184== Command: ./pa05 i inputs/intinput2 outputs/intoutput2
+==27184== Parent PID: 27181
+==27184== 
+--27184-- 
+--27184-- Valgrind options:
+--27184--    --tool=memcheck
+--27184--    --leak-check=full
+--27184--    --verbose
+--27184--    --log-file=outputs/intmemoutput2
+--27184-- Contents of /proc/version:
+--27184--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--27184-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--27184-- Page sizes: currently 4096, max supported 4096
+--27184-- Valgrind library directory: /usr/lib64/valgrind
+--27184-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA05/pa05
+--27184-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--27184--    object doesn't have a dynamic symbol table
+--27184-- Reading syms from /lib64/ld-2.12.so
+--27184-- Scheduler: using generic scheduler lock implementation.
+--27184-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==27184== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-27184-by-avila2-on-ecelinux13.ecn.purdue.edu
+==27184== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-27184-by-avila2-on-ecelinux13.ecn.purdue.edu
+==27184== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-27184-by-avila2-on-ecelinux13.ecn.purdue.edu
+==27184== 
+==27184== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==27184== don't want to do, unless you know exactly what you're doing,
+==27184== or are doing some strange experiment):
+==27184==   /usr/lib64/valgrind/../../bin/vgdb --pid=27184 ...command...
+==27184== 
+==27184== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==27184==   /path/to/gdb ./pa05
+==27184== and then give GDB the following command
+==27184==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=27184
+==27184== --pid is optional if only one valgrind process is running
+==27184== 
+--27184-- REDIR: 0x3eb5217520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--27184-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--27184-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--27184-- REDIR: 0x3eb5217390 (index) redirected to 0x4a07bf0 (index)
+--27184-- REDIR: 0x3eb5217410 (strcmp) redirected to 0x4a08530 (strcmp)
+--27184-- Reading syms from /lib64/libc-2.12.so
+--27184-- REDIR: 0x3eb5684ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--27184-- REDIR: 0x3eb5687180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--27184-- REDIR: 0x3eb5682e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--27184-- REDIR: 0x3eb567f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--27184-- REDIR: 0x3eb5727ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--27184-- REDIR: 0x3eb567a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--27184-- REDIR: 0x3eb567b710 (free) redirected to 0x4a06369 (free)
+--27184-- REDIR: 0x3eb568ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--27184-- REDIR: 0x3eb5689860 (memcpy) redirected to 0x4a08b20 (memcpy)
+==27184== 
+==27184== HEAP SUMMARY:
+==27184==     in use at exit: 568 bytes in 1 blocks
+==27184==   total heap usage: 3 allocs, 2 frees, 1,156 bytes allocated
+==27184== 
+==27184== Searching for pointers to 1 not-freed blocks
+==27184== Checked 64,544 bytes
+==27184== 
+==27184== LEAK SUMMARY:
+==27184==    definitely lost: 0 bytes in 0 blocks
+==27184==    indirectly lost: 0 bytes in 0 blocks
+==27184==      possibly lost: 0 bytes in 0 blocks
+==27184==    still reachable: 568 bytes in 1 blocks
+==27184==         suppressed: 0 bytes in 0 blocks
+==27184== Reachable blocks (those to which a pointer was found) are not shown.
+==27184== To see them, rerun with: --leak-check=full --show-reachable=yes
+==27184== 
+==27184== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--27184-- 
+--27184-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--27184-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==27184== 
+==27184== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
