@@ -1,75 +1,65 @@
-==27191== Memcheck, a memory error detector
-==27191== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==27191== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==27191== Command: ./pa05 i inputs/intinput4 outputs/intoutput4
-==27191== Parent PID: 27188
-==27191== 
---27191-- 
---27191-- Valgrind options:
---27191--    --tool=memcheck
---27191--    --leak-check=full
---27191--    --verbose
---27191--    --log-file=outputs/intmemoutput4
---27191-- Contents of /proc/version:
---27191--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
---27191-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---27191-- Page sizes: currently 4096, max supported 4096
---27191-- Valgrind library directory: /usr/lib64/valgrind
---27191-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA05/pa05
---27191-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---27191--    object doesn't have a dynamic symbol table
---27191-- Reading syms from /lib64/ld-2.12.so
---27191-- Scheduler: using generic scheduler lock implementation.
---27191-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==27191== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-27191-by-avila2-on-ecelinux13.ecn.purdue.edu
-==27191== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-27191-by-avila2-on-ecelinux13.ecn.purdue.edu
-==27191== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-27191-by-avila2-on-ecelinux13.ecn.purdue.edu
-==27191== 
-==27191== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==27191== don't want to do, unless you know exactly what you're doing,
-==27191== or are doing some strange experiment):
-==27191==   /usr/lib64/valgrind/../../bin/vgdb --pid=27191 ...command...
-==27191== 
-==27191== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==27191==   /path/to/gdb ./pa05
-==27191== and then give GDB the following command
-==27191==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=27191
-==27191== --pid is optional if only one valgrind process is running
-==27191== 
---27191-- REDIR: 0x3eb5217520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---27191-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---27191-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---27191-- REDIR: 0x3eb5217390 (index) redirected to 0x4a07bf0 (index)
---27191-- REDIR: 0x3eb5217410 (strcmp) redirected to 0x4a08530 (strcmp)
---27191-- Reading syms from /lib64/libc-2.12.so
---27191-- REDIR: 0x3eb5684ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---27191-- REDIR: 0x3eb5687180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---27191-- REDIR: 0x3eb5682e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---27191-- REDIR: 0x3eb567f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---27191-- REDIR: 0x3eb5727ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
---27191-- REDIR: 0x3eb567a8e0 (malloc) redirected to 0x4a0696c (malloc)
---27191-- REDIR: 0x3eb567b710 (free) redirected to 0x4a06369 (free)
---27191-- REDIR: 0x3eb568ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
-==27191== 
-==27191== HEAP SUMMARY:
-==27191==     in use at exit: 568 bytes in 1 blocks
-==27191==   total heap usage: 3 allocs, 2 frees, 1,140 bytes allocated
-==27191== 
-==27191== Searching for pointers to 1 not-freed blocks
-==27191== Checked 64,544 bytes
-==27191== 
-==27191== LEAK SUMMARY:
-==27191==    definitely lost: 0 bytes in 0 blocks
-==27191==    indirectly lost: 0 bytes in 0 blocks
-==27191==      possibly lost: 0 bytes in 0 blocks
-==27191==    still reachable: 568 bytes in 1 blocks
-==27191==         suppressed: 0 bytes in 0 blocks
-==27191== Reachable blocks (those to which a pointer was found) are not shown.
-==27191== To see them, rerun with: --leak-check=full --show-reachable=yes
-==27191== 
-==27191== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
---27191-- 
---27191-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---27191-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==27191== 
-==27191== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+==30067== Memcheck, a memory error detector
+==30067== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==30067== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==30067== Command: ./pa05 i inputs/intinput4 outputs/intoutput4
+==30067== Parent PID: 30064
+==30067== 
+--30067-- 
+--30067-- Valgrind options:
+--30067--    --tool=memcheck
+--30067--    --leak-check=full
+--30067--    --verbose
+--30067--    --log-file=outputs/intmemoutput4
+--30067-- Contents of /proc/version:
+--30067--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--30067-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--30067-- Page sizes: currently 4096, max supported 4096
+--30067-- Valgrind library directory: /usr/lib64/valgrind
+--30067-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA05/pa05
+--30067-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--30067--    object doesn't have a dynamic symbol table
+--30067-- Reading syms from /lib64/ld-2.12.so
+--30067-- Scheduler: using generic scheduler lock implementation.
+--30067-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==30067== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-30067-by-avila2-on-ecelinux13.ecn.purdue.edu
+==30067== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-30067-by-avila2-on-ecelinux13.ecn.purdue.edu
+==30067== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-30067-by-avila2-on-ecelinux13.ecn.purdue.edu
+==30067== 
+==30067== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==30067== don't want to do, unless you know exactly what you're doing,
+==30067== or are doing some strange experiment):
+==30067==   /usr/lib64/valgrind/../../bin/vgdb --pid=30067 ...command...
+==30067== 
+==30067== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==30067==   /path/to/gdb ./pa05
+==30067== and then give GDB the following command
+==30067==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=30067
+==30067== --pid is optional if only one valgrind process is running
+==30067== 
+--30067-- REDIR: 0x3eb5217520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--30067-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--30067-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--30067-- REDIR: 0x3eb5217390 (index) redirected to 0x4a07bf0 (index)
+--30067-- REDIR: 0x3eb5217410 (strcmp) redirected to 0x4a08530 (strcmp)
+--30067-- Reading syms from /lib64/libc-2.12.so
+--30067-- REDIR: 0x3eb5684ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30067-- REDIR: 0x3eb5687180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30067-- REDIR: 0x3eb5682e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--30067-- REDIR: 0x3eb567f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30067-- REDIR: 0x3eb5727ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--30067-- REDIR: 0x3eb567a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--30067-- REDIR: 0x3eb567b710 (free) redirected to 0x4a06369 (free)
+--30067-- REDIR: 0x3eb568ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+==30067== 
+==30067== HEAP SUMMARY:
+==30067==     in use at exit: 0 bytes in 0 blocks
+==30067==   total heap usage: 3 allocs, 3 frees, 1,140 bytes allocated
+==30067== 
+==30067== All heap blocks were freed -- no leaks are possible
+==30067== 
+==30067== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--30067-- 
+--30067-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--30067-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==30067== 
+==30067== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

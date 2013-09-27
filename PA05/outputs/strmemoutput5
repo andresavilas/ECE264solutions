@@ -1,128 +1,126 @@
-==27200== Memcheck, a memory error detector
-==27200== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==27200== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==27200== Command: ./pa05 s inputs/strinput5 outputs/stroutput5
-==27200== Parent PID: 27196
-==27200== 
---27200-- 
---27200-- Valgrind options:
---27200--    --tool=memcheck
---27200--    --leak-check=full
---27200--    --verbose
---27200--    --log-file=outputs/strmemoutput5
---27200-- Contents of /proc/version:
---27200--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
---27200-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---27200-- Page sizes: currently 4096, max supported 4096
---27200-- Valgrind library directory: /usr/lib64/valgrind
---27200-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA05/pa05
---27200-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---27200--    object doesn't have a dynamic symbol table
---27200-- Reading syms from /lib64/ld-2.12.so
---27200-- Scheduler: using generic scheduler lock implementation.
---27200-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==27200== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-27200-by-avila2-on-ecelinux13.ecn.purdue.edu
-==27200== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-27200-by-avila2-on-ecelinux13.ecn.purdue.edu
-==27200== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-27200-by-avila2-on-ecelinux13.ecn.purdue.edu
-==27200== 
-==27200== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==27200== don't want to do, unless you know exactly what you're doing,
-==27200== or are doing some strange experiment):
-==27200==   /usr/lib64/valgrind/../../bin/vgdb --pid=27200 ...command...
-==27200== 
-==27200== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==27200==   /path/to/gdb ./pa05
-==27200== and then give GDB the following command
-==27200==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=27200
-==27200== --pid is optional if only one valgrind process is running
-==27200== 
---27200-- REDIR: 0x3eb5217520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---27200-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---27200-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---27200-- REDIR: 0x3eb5217390 (index) redirected to 0x4a07bf0 (index)
---27200-- REDIR: 0x3eb5217410 (strcmp) redirected to 0x4a08530 (strcmp)
---27200-- Reading syms from /lib64/libc-2.12.so
---27200-- REDIR: 0x3eb5684ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---27200-- REDIR: 0x3eb5687180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---27200-- REDIR: 0x3eb5682e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---27200-- REDIR: 0x3eb567f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---27200-- REDIR: 0x3eb5727ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
---27200-- REDIR: 0x3eb567a8e0 (malloc) redirected to 0x4a0696c (malloc)
---27200-- REDIR: 0x3eb5683540 (memchr) redirected to 0x4a085d0 (memchr)
---27200-- REDIR: 0x3eb5689860 (memcpy) redirected to 0x4a08b20 (memcpy)
---27200-- REDIR: 0x3eb5681310 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---27200-- REDIR: 0x3eb5732d90 (__strlen_sse42) redirected to 0x4a07f50 (strlen)
---27200-- REDIR: 0x3eb5680d60 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---27200-- REDIR: 0x3eb5733820 (???) redirected to 0x4a07f90 (strcpy)
---27200-- REDIR: 0x3eb567b710 (free) redirected to 0x4a06369 (free)
---27200-- REDIR: 0x3eb568ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
---27200-- REDIR: 0x3eb56846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
---27200-- REDIR: 0x3eb5681350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
-==27200== Invalid free() / delete / delete[] / realloc()
-==27200==    at 0x4A063F0: free (vg_replace_malloc.c:446)
-==27200==    by 0x400BA6: freeString (answer05.c:230)
-==27200==    by 0x400F85: main (pa05.c:45)
-==27200==  Address 0x4c382c8 is 8 bytes inside a block of size 104 free'd
-==27200==    at 0x4A063F0: free (vg_replace_malloc.c:446)
-==27200==    by 0x400BA6: freeString (answer05.c:230)
-==27200==    by 0x400F85: main (pa05.c:45)
-==27200== 
-==27200== Invalid free() / delete / delete[] / realloc()
-==27200==    at 0x4A063F0: free (vg_replace_malloc.c:446)
-==27200==    by 0x400BC7: freeString (answer05.c:232)
-==27200==    by 0x400F85: main (pa05.c:45)
-==27200==  Address 0x4c38328 is 0 bytes after a block of size 104 free'd
-==27200==    at 0x4A063F0: free (vg_replace_malloc.c:446)
-==27200==    by 0x400BA6: freeString (answer05.c:230)
-==27200==    by 0x400F85: main (pa05.c:45)
-==27200== 
-==27200== 
-==27200== HEAP SUMMARY:
-==27200==     in use at exit: 1,236 bytes in 14 blocks
-==27200==   total heap usage: 16 allocs, 15 frees, 1,908 bytes allocated
-==27200== 
-==27200== Searching for pointers to 14 not-freed blocks
-==27200== Checked 64,544 bytes
-==27200== 
-==27200== 668 bytes in 13 blocks are definitely lost in loss record 2 of 2
-==27200==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==27200==    by 0x400A6E: readString (answer05.c:173)
-==27200==    by 0x400F12: main (pa05.c:36)
-==27200== 
-==27200== LEAK SUMMARY:
-==27200==    definitely lost: 668 bytes in 13 blocks
-==27200==    indirectly lost: 0 bytes in 0 blocks
-==27200==      possibly lost: 0 bytes in 0 blocks
-==27200==    still reachable: 568 bytes in 1 blocks
-==27200==         suppressed: 0 bytes in 0 blocks
-==27200== Reachable blocks (those to which a pointer was found) are not shown.
-==27200== To see them, rerun with: --leak-check=full --show-reachable=yes
-==27200== 
-==27200== ERROR SUMMARY: 14 errors from 3 contexts (suppressed: 6 from 6)
-==27200== 
-==27200== 1 errors in context 1 of 3:
-==27200== Invalid free() / delete / delete[] / realloc()
-==27200==    at 0x4A063F0: free (vg_replace_malloc.c:446)
-==27200==    by 0x400BC7: freeString (answer05.c:232)
-==27200==    by 0x400F85: main (pa05.c:45)
-==27200==  Address 0x4c38328 is 0 bytes after a block of size 104 free'd
-==27200==    at 0x4A063F0: free (vg_replace_malloc.c:446)
-==27200==    by 0x400BA6: freeString (answer05.c:230)
-==27200==    by 0x400F85: main (pa05.c:45)
-==27200== 
-==27200== 
-==27200== 12 errors in context 2 of 3:
-==27200== Invalid free() / delete / delete[] / realloc()
-==27200==    at 0x4A063F0: free (vg_replace_malloc.c:446)
-==27200==    by 0x400BA6: freeString (answer05.c:230)
-==27200==    by 0x400F85: main (pa05.c:45)
-==27200==  Address 0x4c382c8 is 8 bytes inside a block of size 104 free'd
-==27200==    at 0x4A063F0: free (vg_replace_malloc.c:446)
-==27200==    by 0x400BA6: freeString (answer05.c:230)
-==27200==    by 0x400F85: main (pa05.c:45)
-==27200== 
---27200-- 
---27200-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---27200-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==27200== 
-==27200== ERROR SUMMARY: 14 errors from 3 contexts (suppressed: 6 from 6)
+==30075== Memcheck, a memory error detector
+==30075== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==30075== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==30075== Command: ./pa05 s inputs/strinput5 outputs/stroutput5
+==30075== Parent PID: 30071
+==30075== 
+--30075-- 
+--30075-- Valgrind options:
+--30075--    --tool=memcheck
+--30075--    --leak-check=full
+--30075--    --verbose
+--30075--    --log-file=outputs/strmemoutput5
+--30075-- Contents of /proc/version:
+--30075--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--30075-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--30075-- Page sizes: currently 4096, max supported 4096
+--30075-- Valgrind library directory: /usr/lib64/valgrind
+--30075-- Reading syms from /home/shay/a/avila2/ECE264/solutions/ECE264solutions/PA05/pa05
+--30075-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--30075--    object doesn't have a dynamic symbol table
+--30075-- Reading syms from /lib64/ld-2.12.so
+--30075-- Scheduler: using generic scheduler lock implementation.
+--30075-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==30075== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-30075-by-avila2-on-ecelinux13.ecn.purdue.edu
+==30075== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-30075-by-avila2-on-ecelinux13.ecn.purdue.edu
+==30075== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-30075-by-avila2-on-ecelinux13.ecn.purdue.edu
+==30075== 
+==30075== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==30075== don't want to do, unless you know exactly what you're doing,
+==30075== or are doing some strange experiment):
+==30075==   /usr/lib64/valgrind/../../bin/vgdb --pid=30075 ...command...
+==30075== 
+==30075== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==30075==   /path/to/gdb ./pa05
+==30075== and then give GDB the following command
+==30075==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=30075
+==30075== --pid is optional if only one valgrind process is running
+==30075== 
+--30075-- REDIR: 0x3eb5217520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--30075-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--30075-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--30075-- REDIR: 0x3eb5217390 (index) redirected to 0x4a07bf0 (index)
+--30075-- REDIR: 0x3eb5217410 (strcmp) redirected to 0x4a08530 (strcmp)
+--30075-- Reading syms from /lib64/libc-2.12.so
+--30075-- REDIR: 0x3eb5684ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30075-- REDIR: 0x3eb5687180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30075-- REDIR: 0x3eb5682e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--30075-- REDIR: 0x3eb567f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30075-- REDIR: 0x3eb5727ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--30075-- REDIR: 0x3eb567a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--30075-- REDIR: 0x3eb5683540 (memchr) redirected to 0x4a085d0 (memchr)
+--30075-- REDIR: 0x3eb5689860 (memcpy) redirected to 0x4a08b20 (memcpy)
+--30075-- REDIR: 0x3eb5681310 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30075-- REDIR: 0x3eb5732d90 (__strlen_sse42) redirected to 0x4a07f50 (strlen)
+--30075-- REDIR: 0x3eb5680d60 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30075-- REDIR: 0x3eb5733820 (???) redirected to 0x4a07f90 (strcpy)
+--30075-- REDIR: 0x3eb567b710 (free) redirected to 0x4a06369 (free)
+--30075-- REDIR: 0x3eb568ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--30075-- REDIR: 0x3eb56846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--30075-- REDIR: 0x3eb5681350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+==30075== Invalid free() / delete / delete[] / realloc()
+==30075==    at 0x4A063F0: free (vg_replace_malloc.c:446)
+==30075==    by 0x400BA6: freeString (answer05.c:230)
+==30075==    by 0x400F9D: main (pa05.c:45)
+==30075==  Address 0x4c382c8 is 8 bytes inside a block of size 104 free'd
+==30075==    at 0x4A063F0: free (vg_replace_malloc.c:446)
+==30075==    by 0x400BA6: freeString (answer05.c:230)
+==30075==    by 0x400F9D: main (pa05.c:45)
+==30075== 
+==30075== Invalid free() / delete / delete[] / realloc()
+==30075==    at 0x4A063F0: free (vg_replace_malloc.c:446)
+==30075==    by 0x400BC7: freeString (answer05.c:232)
+==30075==    by 0x400F9D: main (pa05.c:45)
+==30075==  Address 0x4c38328 is 0 bytes after a block of size 104 free'd
+==30075==    at 0x4A063F0: free (vg_replace_malloc.c:446)
+==30075==    by 0x400BA6: freeString (answer05.c:230)
+==30075==    by 0x400F9D: main (pa05.c:45)
+==30075== 
+==30075== 
+==30075== HEAP SUMMARY:
+==30075==     in use at exit: 668 bytes in 13 blocks
+==30075==   total heap usage: 16 allocs, 16 frees, 1,908 bytes allocated
+==30075== 
+==30075== Searching for pointers to 13 not-freed blocks
+==30075== Checked 64,264 bytes
+==30075== 
+==30075== 668 bytes in 13 blocks are definitely lost in loss record 1 of 1
+==30075==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==30075==    by 0x400A6E: readString (answer05.c:173)
+==30075==    by 0x400F2A: main (pa05.c:36)
+==30075== 
+==30075== LEAK SUMMARY:
+==30075==    definitely lost: 668 bytes in 13 blocks
+==30075==    indirectly lost: 0 bytes in 0 blocks
+==30075==      possibly lost: 0 bytes in 0 blocks
+==30075==    still reachable: 0 bytes in 0 blocks
+==30075==         suppressed: 0 bytes in 0 blocks
+==30075== 
+==30075== ERROR SUMMARY: 14 errors from 3 contexts (suppressed: 6 from 6)
+==30075== 
+==30075== 1 errors in context 1 of 3:
+==30075== Invalid free() / delete / delete[] / realloc()
+==30075==    at 0x4A063F0: free (vg_replace_malloc.c:446)
+==30075==    by 0x400BC7: freeString (answer05.c:232)
+==30075==    by 0x400F9D: main (pa05.c:45)
+==30075==  Address 0x4c38328 is 0 bytes after a block of size 104 free'd
+==30075==    at 0x4A063F0: free (vg_replace_malloc.c:446)
+==30075==    by 0x400BA6: freeString (answer05.c:230)
+==30075==    by 0x400F9D: main (pa05.c:45)
+==30075== 
+==30075== 
+==30075== 12 errors in context 2 of 3:
+==30075== Invalid free() / delete / delete[] / realloc()
+==30075==    at 0x4A063F0: free (vg_replace_malloc.c:446)
+==30075==    by 0x400BA6: freeString (answer05.c:230)
+==30075==    by 0x400F9D: main (pa05.c:45)
+==30075==  Address 0x4c382c8 is 8 bytes inside a block of size 104 free'd
+==30075==    at 0x4A063F0: free (vg_replace_malloc.c:446)
+==30075==    by 0x400BA6: freeString (answer05.c:230)
+==30075==    by 0x400F9D: main (pa05.c:45)
+==30075== 
+--30075-- 
+--30075-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--30075-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==30075== 
+==30075== ERROR SUMMARY: 14 errors from 3 contexts (suppressed: 6 from 6)

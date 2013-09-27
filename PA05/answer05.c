@@ -263,6 +263,7 @@ int saveInteger(char * filename, int * arrInteger, int numInteger)
 	}
       val = 1;
     }
+  fclose(fh);
   return val;
 }
 
@@ -286,7 +287,7 @@ int saveInteger(char * filename, int * arrInteger, int numInteger)
 
 int saveString(char * filename, char * * arrString, int numString)
 {
-    FILE* fh = fopen(filename,"w");
+  FILE* fh = fopen(filename,"w");
   int val = 0;
   if(fh != NULL)
     {
@@ -297,6 +298,7 @@ int saveString(char * filename, char * * arrString, int numString)
 	}
       val = 1;
     }
+  fclose(fh);
   return val;
 }
 
