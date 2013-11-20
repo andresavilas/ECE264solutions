@@ -172,7 +172,113 @@
  */
 struct Image * loadImage(const char* filename)
 {
-    return NULL;
+  int val;
+  FILE *fptr = fopen(filename,"rb");
+  struct ImageHeader *header = malloc(sizeof(struct ImageHeader));
+  if(header == NULL)
+    {
+      return NULL;
+    }
+  val = fread(header,sizeof(struct ImageHeader),1,fptr);
+  if (fptr == NULL)
+    {
+      free(header);
+      return NULL;
+    }
+  if(val != 1)
+    {
+      free(header);
+      fclose(fptr);
+      return NULL;
+    }
+  if(header->magic_bits != ECE264_IMAGE_MAGIC_BITS)
+    {
+      free(header);
+      fclose(fptr);
+      return NULL;
+    }
+  if(header->width <= 0)
+    {
+      free(header);
+      fclose(fptr);
+      return NULL;
+    }
+  if(header->height <= 0)
+    {
+      free(header);
+      fclose(fptr);
+      return NULL;
+    }
+  struct Image *image = malloc(sizeof(struct Image));
+  if(image == NULL)
+    {
+      free(header);
+      fclose(fptr);
+      return NULL;
+    }
+  image->width = header->width;
+  image->height = header->height;
+  image->comment = malloc(header->comment_len * sizeof(char));
+  if(image->comment == NULL && header->comment_len != 0)
+    {
+      free(header);
+      free(image->comment);
+      free(image);
+      fclose(fptr);
+      return NULL;
+    }
+ 
+  val = fread(image->comment,sizeof(char),header->comment_len,fptr);
+  if(val != header->comment_len)
+    {
+      free(header);
+      free(image->comment);
+      free(image);
+      fclose(fptr);
+      return NULL;
+    }
+   if(image->comment[header->comment_len - 1] != '\0')
+    {
+      free(header);
+      free(image->comment);
+      free(image);
+      fclose(fptr);
+      return NULL;
+    }
+
+  int numpix = image->width * image->height;
+  image->data = malloc(sizeof(uint8_t) * numpix);
+  if(image->data == NULL)
+    {
+      free(header);
+      free(image->comment);
+      free(image);
+      fclose(fptr);
+      return NULL;
+    }
+  val = fread(image->data,sizeof(uint8_t),numpix,fptr);
+  if(val != numpix)
+    {
+      free(header);
+      free(image->data);
+      free(image->comment);
+      free(image);
+      fclose(fptr);
+      return NULL;
+    }
+  val = fread(image->data,sizeof(uint8_t),1,fptr);
+  if(val != 0)
+    {
+      free(header);
+      free(image->data);
+      free(image->comment);
+      free(image);
+      fclose(fptr);
+      return NULL;
+    }
+  free(header);
+  fclose(fptr);
+  return image;
 }
 
 
@@ -188,7 +294,12 @@ struct Image * loadImage(const char* filename)
  */
 void freeImage(struct Image * image)
 {
-
+  if(image != NULL)
+    {
+      free(image->comment);
+      free(image->data);
+      free(image);
+    }
 }
 
 /*
@@ -217,7 +328,25 @@ void freeImage(struct Image * image)
  */
 void linearNormalization(struct Image * image)
 {
-
+  int lcv;
+  uint8_t max = 0;
+  uint8_t min = 255;
+  int len = image->width * image->height;
+  for(lcv = 0; lcv < len; lcv++)
+    {
+      if(max < image->data[lcv])
+	{
+	  max = image->data[lcv];
+	}
+      if(min > image->data[lcv])
+	{
+	  min = image->data[lcv];
+	}
+    }
+  for(lcv = 0;lcv < len;lcv++)
+    {
+      image->data[lcv] = (image->data[lcv] - min) * 255.0 / (max - min);
+    }
 }
 
 

@@ -1,0 +1,77 @@
+GCC = gcc
+CFLAGS = -g -Wall -Wshadow
+VALGRIND = valgrind --tool=memcheck --leak-check=full --verbose
+
+pa06: pa06.o answer06.o
+	$(GCC) $(CFLAGS) pa06.o answer06.o -o ./pa06
+
+pa06.o: pa06.c answer06.c
+	$(GCC) $(CFLAGS) -c pa06.c
+
+answer06.o: pa06.c answer06.c
+	$(GCC) $(CFLAGS) -c answer06.c 
+
+clean: 
+	@rm *.o pa06
+
+test1: pa06
+	@./pa06 images/01-unnormalized-smile.ee264 outputs/output1.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/01-unnormalized-smile.ee264 outputs/output1.ppm
+	@diff outputs/output1.ppm expected/01-smile.ppm
+
+test2: pa06
+	@./pa06 images/02-unnormalized-cat-chess.ee264 outputs/output2.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/02-unnormalized-cat-chess.ee264 outputs/output2.ppm
+	@diff outputs/output2.ppm expected/02-cat-chess.ppm
+
+test3: pa06
+	./pa06 images/03-unnormalized-hawkes-bay-NZ.ee264 outputs/output3.ppm  
+	$(VALGRIND) --log-file=valgrindlog ./pa06 images/03-unnormalized-hawkes-bay-NZ.ee264 outputs/output3.ppm
+	diff outputs/output3.ppm expected/03-hawkes-bay-NZ.ppm
+
+test4: pa06
+	./pa06 images/04-unnormalized-nelsonmandela.ee264 outputs/output4.ppm  
+	$(VALGRIND) --log-file=valgrindlog ./pa06 images/04-unnormalized-nelsonmandela.ee264 outputs/output4.ppm
+	diff outputs/output4.ppm expected/04-nelsonmandela.ppm
+
+test5: pa06
+	@./pa06 images/05-unnormalized-sagan-stamp.ee264 outputs/output5.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/05-unnormalized-sagan-stamp.ee264 outputs/output5.ppm
+	@diff outputs/output5.ppm expected/05-sagan-stamp.ppm
+
+test6: pa06
+	@./pa06 images/corrupt-testcases/bad-comment-len.ee264 outputs/output6.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/bad-comment-len.ee264 outputs/output6.ppm
+
+test7: pa06
+	@./pa06 images/corrupt-testcases/big-width-height.ee264 outputs/output7.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/big-width-height.ee264 outputs/output7.ppm
+
+test8: pa06
+	@./pa06 images/corrupt-testcases/check-magic-bits.ee264 outputs/output8.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/check-magic-bits.ee264 outputs/output8.ppm
+
+test9: pa06
+	@./pa06 images/corrupt-testcases/comment-has-no-null-byte.ee264 outputs/output9.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/comment-has-no-null-byte.ee264 outputs/output9.ppm
+
+test10: pa06
+	@./pa06 images/corrupt-testcases/height0.ee264 outputs/output10.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/height0.ee264 outputs/output10.ppm
+
+test11: pa06
+	@./pa06 images/corrupt-testcases/height-wrong.ee264 outputs/output11.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/height-wrong.ee264 outputs/output11.ppm  
+
+test12: pa06
+	@./pa06 images/corrupt-testcases/incomplete-header.ee264 outputs/output12.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/incomplete-header.ee264 outputs/output12.ppm  
+
+test13: pa06
+	@./pa06 images/corrupt-testcases/incomplete-image.ee264 outputs/output13.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/incomplete-image.ee264 outputs/output13.ppm
+
+test14: pa06
+	@./pa06 images/corrupt-testcases/width0.ee264 outputs/output14.ppm  
+	@$(VALGRIND) --log-file=valgrindlog ./pa06 images/corrupt-testcases/width0.ee264 outputs/output14.ppm  
+  
