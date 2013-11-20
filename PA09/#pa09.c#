@@ -23,11 +23,11 @@ int main(int argc, char ** argv)
     }
   else
     {
-      tree = huff_bin(fptr);
+      //tree = huff_bin(in);
     }
   fclose(fptr);
   FILE * fptr2;
-  fptr2 = fopen(argv[2],"w");
+  fptr2 = fopen(argv[2],"r");
   if(fptr2 != NULL)
     {
       Huff_postOrderPrint(tree,fptr2);
