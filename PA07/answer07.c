@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * Prints a linked-list "head" into the output fie "out"
+ * Prints a linked-list "head" into the output file "out"
  *
  * NOTE: we have given the code for this function
  */
@@ -15,6 +15,17 @@ void List_print(FILE * out, Node * head)
 	    head = head -> next;
 	}
     printf("\n");
+}
+
+void List_dump(Node * head)
+{
+  FILE * out = stdout;
+  while(head != NULL)
+    {
+      fprintf(out, "[%p] %5d: %6d ==> %p\n", head, head -> index, head -> value, head -> next);
+      head = head -> next;
+    }
+  printf("\n");
 }
 
 
@@ -35,7 +46,12 @@ void List_print(FILE * out, Node * head)
  */
 void List_destroy(Node * head)
 {
-
+  if(head == NULL)
+    {
+      return;
+    }
+  List_destroy(head -> next);
+  free(head);
 }
 
 /**
@@ -53,8 +69,11 @@ void List_destroy(Node * head)
  */
 Node * List_create(int value, int index)
 {
-
-    return NULL;
+  Node * lnc = malloc(sizeof(Node));
+  lnc -> value = value;
+  lnc -> index = index;
+  lnc -> next = NULL;
+  return lnc;
 }
 
 /**
@@ -85,7 +104,17 @@ Node * List_create(int value, int index)
  */
 Node * List_build(int * value, int * index, int length)
 {
-    return NULL;
+  int ct;
+  Node * p = NULL;
+  for(ct = 0;ct < length;ct++)
+    {
+      if(value[ct] == 0)
+	{
+	  continue;
+	}
+      p = List_insert_ascend(p,value[ct],index[ct]);
+    }
+  return p;
 }
 
 
@@ -110,7 +139,22 @@ Node * List_build(int * value, int * index, int length)
  */
 Node * List_insert_ascend(Node * head, int value, int index)
 {
-    return NULL;
+  if(head == NULL)
+    {
+      return List_create(value,index);
+    }
+  if((head -> index) > index)
+    {
+      Node* p = List_create(value,index);
+      p -> next = head;
+      return p;
+    } 
+  if((head -> index) == index)
+    {
+      return head;
+    } 
+  head -> next = List_insert_ascend(head -> next,value,index);
+  return head;
 }
 
 
@@ -126,7 +170,18 @@ Node * List_insert_ascend(Node * head, int value, int index)
  */
 Node * List_delete(Node * head, int index)
 {
-    return NULL;
+  if(head == NULL)
+    {
+      return head;
+    }
+  if(head -> index == index)
+    {
+      Node * p = head -> next;
+      free(head);
+      return p;
+    }
+  head -> next = List_delete(head -> next,index);
+  return head;
 }
 
 /**
@@ -146,11 +201,31 @@ Node * List_delete(Node * head, int index)
  * lists, and then merge the second into the copy. In this way the
  * original copy of the list is not "mutated".
  */
+Node * Copy(Node *,Node *);
+
 Node * List_copy(Node * head)
 {
-    return NULL;
+  if(head == NULL)
+    {
+      return head;
+    }
+  Node * p = List_create(head -> value,head -> index);
+  head = head -> next;
+  p = Copy(p,head);
+  return p;
 }
 
+Node * Copy(Node * p,Node * head)
+{
+  if(head == NULL)
+    {
+      return p;
+    }
+  p = List_insert_ascend(p,head -> value,head -> index);
+  head = head -> next;
+  p -> next = Copy(p -> next,head);
+  return p;
+}
 
 /**
  * Merged two linked list together
@@ -172,8 +247,87 @@ Node * List_copy(Node * head)
  * This function should not modify either "head1" or "head2". You only
  * need to make a clone of "head1".
  */
+Node * insert(Node *,int,int);
+
 Node * List_merge(Node * head1, Node * head2)
 {
-    return NULL;
+  Node * head3;
+  head3 = List_copy(head1);
+  while(head2 != NULL)
+    {
+      head3 = insert(head3,head2 -> value,head2 -> index);
+      head2 = head2 -> next;
+    }
+  return head3;
 }
 
+Node * insert(Node * head3,int value,int index)
+{
+  if(head3 == NULL)
+    {
+      return(List_create(value,index));
+    }
+  if((head3 -> index) == index)
+    {
+      head3 -> value += value;
+      if(head3 -> value == 0)
+	{
+	  head3 = List_delete(head3,index);
+	}
+      return head3;
+    }
+  if((head3 -> index) > index)
+    {
+      Node * p = List_create(value,index);
+      p -> next = head3;
+      return p;
+    }
+  head3 -> next = insert(head3 -> next,value,index);
+  return head3;
+}
+
+/*#ifdef MYTEST
+
+// gcc -g -Wall -Wshadow -DMYTEST -o answer07 answer07.c && ./answer07
+int main(int argc, char * * argv)
+{
+  int val[8] = {0,1,2,4,1,5,8,3};
+  int ind[8] = {1,4,7,2,9,2,4,3};
+  printf("\nAbout to run my custom test-cases\n");
+
+  // Test list-create works
+  Node * head = List_create(200, 5);
+  // Test list-insert-ascend
+  printf("\nInsert Ascend\n");
+  head = List_insert_ascend(head,-5,1);
+  head = List_insert_ascend(head,5,1);  
+  head = List_insert_ascend(head,-6,3);
+  head = List_insert_ascend(head,3,4);
+  List_dump(head);
+  printf("Build\n");
+  Node * build = List_build(val,ind,8);
+  List_dump(build);
+  printf("Merge\n");
+  Node * head2 = List_create(112,8);
+  head2 = List_insert_ascend(head2,5,1);
+  head2 = List_insert_ascend(head2,5,7);  
+  head2 = List_insert_ascend(head2,-6,4);
+  head2 = List_insert_ascend(head2,3,5);
+  List_dump(head2);
+  Node * head3 = List_merge(head,head2);
+  List_dump(head3);
+  printf("Delete\n");
+  head = List_delete(head,1);
+  List_dump(head);
+  printf("Copy\n");
+  Node * copy;
+  copy = List_copy(head);
+  List_dump(copy);
+  printf("Destroy\n");
+  List_destroy(head);  
+  List_dump(head);
+  return 0;
+}
+
+#endif
+*/
